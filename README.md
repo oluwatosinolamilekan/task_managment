@@ -18,13 +18,37 @@ Below are the steps you need to successfully setup and run the application.
 
 - Clone the app from the repository and cd into the root directory of the app
 
-- Run `composer install`
-- Copy `.env.example into .env`
-- Update DB credentials to match with your database
+Now, the most important, build and start the package dependencies by running
+`composer install`
+
+Composer will start doing its magic. All required dependencies, will be installed.
+
+
+```
+ cp .env.example .env
+```
+
+
+While composer is doing its magic, you need to add to modify `.env` file:
+```
+ DB_CONNECTION=mysql
+ DB_HOST=127.0.0.1
+ DB_PORT=3306
+ DB_DATABASE=laravel
+ DB_USERNAME=root
+ DB_PASSWORD=
+```
+
+### To Migrate the database in the project, command below
+```
+ php artisan migrate --seed
+```
+
 - Make sure you having this to your .env file `PROCESS_TASK_URL="http://127.0.0.1:5000"` 
-- Run `php artisan migrate`
-- To run quick database generation for menus run `php artisan db:seed` (TaskFactory already implemented in the databaseeder);
-- Run `php artisan serve`
+
+While migrating the database, you need to serve the project with this command `php artisan serve`
+
+
 - After the laravel project get running make sure you run the python project also with `python app.py` in the python project project
 
 ## Features
