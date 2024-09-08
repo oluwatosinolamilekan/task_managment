@@ -54,3 +54,8 @@ While migrating the database, you need to serve the project with this command `p
 ## Features
 
 - Lists, create, and update, tasks managements.
+
+### How to run tests
+```
+ php artisan test
+```

@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Http;
 
 class ExampleTest extends TestCase
 {

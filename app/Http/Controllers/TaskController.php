@@ -42,8 +42,19 @@ class TaskController extends Controller
 
             $url = $response->json()['message'];
             
-            DB::commit();
-            return redirect()->back()->with('message', $url);
+            // DB::commit();
+            // return redirect()->back()->with('message', $url);
+
+             // Check if the response is successful
+            if ($response->successful()) {
+                $url = $response->json()['message'];
+                DB::commit();
+                return redirect()->back()->with('message', $url);
+            } else {
+                // Handle unsuccessful response from Python API
+                throw new Exception('Error processing task in Python service.');
+            }
+
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
         }
