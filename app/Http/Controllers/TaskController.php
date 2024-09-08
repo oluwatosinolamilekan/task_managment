@@ -27,9 +27,9 @@ class TaskController extends Controller
 
     public function store(CreateTaskRequest $request)
     {
-        try{
+        try {
             $data = $request->validated();
-            
+
             DB::beginTransaction();
 
             $task = Task::create($data);
@@ -40,15 +40,22 @@ class TaskController extends Controller
                 'name' => $task->name,
             ]);
 
-            $url = $response->json()['message'];
-            
-            DB::commit();
-            return redirect()->back()->with('message', $url);
-            
-        }catch(Exception $e){
+            if ($response->successful() && isset($response->json()['message'])) {
+                $pythonMessage = $response->json()['message'];
+
+                DB::commit();
+
+                return redirect()->back()->with('message', $pythonMessage);
+            } else {
+                throw new Exception('Python service did not return a valid message.');
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
 
     public function update($id)
     {
