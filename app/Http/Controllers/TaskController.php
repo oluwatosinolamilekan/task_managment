@@ -41,11 +41,11 @@ class TaskController extends Controller
             ]);
 
             if ($response->successful() && isset($response->json()['message'])) {
-                $pythonMessage = $response->json()['message'];
+                $res = $response->json()['message'];
 
                 DB::commit();
 
-                return redirect()->back()->with('message', $pythonMessage);
+                return redirect()->back()->with('message', $res);
             } else {
                 throw new Exception('Python service did not return a valid message.');
             }
