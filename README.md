@@ -41,7 +41,7 @@ While composer is doing its magic, you need to add to modify `.env` file:
 
 ### To Migrate the database in the project, command below
 ```
- php artisan migrate --seed
+ php artisan migrate
 ```
 
 - Make sure you having this to your .env file `PROCESS_TASK_URL="http://127.0.0.1:5000"` 
