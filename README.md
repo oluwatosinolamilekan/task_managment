@@ -49,7 +49,7 @@ While composer is doing its magic, you need to add to modify `.env` file:
 While migrating the database, you need to serve the project with this command `php artisan serve`
 
 
-- After the laravel project get running make sure you run the python project also with `python app.py` in the python project project
+- After laravel project get running, move to the python project respository [click here](https://github.com/oluwatosinolamilekan/task_management_py) is running before performing any operation in the view/
 
 ## Features
 
